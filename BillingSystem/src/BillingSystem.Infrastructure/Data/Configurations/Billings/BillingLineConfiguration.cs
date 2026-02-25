@@ -21,8 +21,6 @@ namespace BillingSystem.Infrastructure.Data.Configurations.Billings
                    .WithMany()
                    .HasForeignKey(bl => bl.ProductId)
                    .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasQueryFilter(bl => bl.DeletedAt == null);
         }
     }
 }
