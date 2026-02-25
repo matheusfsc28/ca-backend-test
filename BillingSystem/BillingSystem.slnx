@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="../../../../../../OneDrive/Documentos/code/tests/ca-backend-test/BillingSystem/src/BillingSystem.Domain/BillingSystem.Domain.csproj" />
+    <Project Path="../../../../../../OneDrive/Documentos/code/tests/ca-backend-test/BillingSystem/src/BillingSystem.Infrastructure/BillingSystem.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
