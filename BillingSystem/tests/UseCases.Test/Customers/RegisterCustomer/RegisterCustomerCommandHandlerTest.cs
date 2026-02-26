@@ -5,7 +5,6 @@ using BillingSystem.Common.Exceptions.BaseExceptions;
 using CommonTestUtilities.Commands.Customers.RegisterCustomer;
 using CommonTestUtilities.Data.UnitOfWork;
 using CommonTestUtilities.Repositories.Customers;
-using Moq;
 
 namespace UseCases.Test.Customers.RegisterCustomer
 {
@@ -57,7 +56,7 @@ namespace UseCases.Test.Customers.RegisterCustomer
                 .SetupIdExists(idExists)
                 .Build();
 
-            var customerWriteRepo = new Mock<BillingSystem.Domain.Interfaces.Repositories.Customers.ICustomerWriteRepository>().Object;
+            var customerWriteRepo = new CustomerWriteRepositoryBuilder().Build();
             var unitOfWork = UnitOfWorkBuilder.Build();
 
             return new RegisterCustomerCommandHandler(
