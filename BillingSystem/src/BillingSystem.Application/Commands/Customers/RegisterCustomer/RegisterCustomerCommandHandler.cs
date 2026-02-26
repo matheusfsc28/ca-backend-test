@@ -26,6 +26,19 @@ namespace BillingSystem.Application.Commands.Customers.RegisterCustomer
 
         public async Task<CustomerResponseDto> Handle(RegisterCustomerCommand request, CancellationToken cancellationToken)
         {
+            await CheckIfCustomerIsUniqueAsync(request, cancellationToken);
+
+            var customer = request.ToDomain();
+
+            await _customerWriteRepository.AddAsync(customer, cancellationToken);
+
+            await _unitOfWork.CommitAsync(cancellationToken);
+
+            return new CustomerResponseDto(customer);
+        }
+
+        private async Task CheckIfCustomerIsUniqueAsync(RegisterCustomerCommand request, CancellationToken cancellationToken)
+        {
             var errors = new List<string>();
 
             if (await _customerReadRepository.EmailRegistered(request.Email, cancellationToken))
@@ -36,14 +49,6 @@ namespace BillingSystem.Application.Commands.Customers.RegisterCustomer
 
             if (errors.Count > 0)
                 throw new ErrorOnValidationException(errors);
-
-            var customer = request.ToDomain();
-
-            await _customerWriteRepository.AddAsync(customer, cancellationToken);
-
-            await _unitOfWork.CommitAsync(cancellationToken);
-
-            return new CustomerResponseDto(customer);
         }
     }
 }
