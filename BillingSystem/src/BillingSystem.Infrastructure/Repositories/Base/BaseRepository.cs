@@ -2,6 +2,7 @@
 using BillingSystem.Domain.Interfaces.Repositories.Base;
 using BillingSystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BillingSystem.Infrastructure.Repositories.Base
 {
@@ -44,6 +45,7 @@ namespace BillingSystem.Infrastructure.Repositories.Base
         public async Task<HashSet<Guid>> GetExistingIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default)
         {
             return await _dbSet
+                .AsNoTracking()
                 .Where(e => ids.Contains(e.Id))
                 .Select(e => e.Id)
                 .ToHashSetAsync(cancellationToken);
@@ -51,7 +53,24 @@ namespace BillingSystem.Infrastructure.Repositories.Base
 
         public Task<bool> HasAnyById(Guid id, CancellationToken cancellationToken)
         {
-            return _dbSet.AnyAsync(e => e.Id == id, cancellationToken);
+            return _dbSet.AsNoTracking().AnyAsync(e => e.Id == id, cancellationToken);
+        }
+
+        public async Task<(IEnumerable<T> Items, int TotalCount)> GetPagedAsync(int pageNumber, int pageSize, Expression<Func<T, bool>>? filter = null, CancellationToken cancellationToken = default)
+        {
+            var query = _dbSet.AsNoTracking();
+
+            if (filter != null)
+                query = query.Where(filter);
+
+            var totalCount = await query.CountAsync(cancellationToken);
+
+            var items = await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync(cancellationToken);
+
+            return (items, totalCount);
         }
     }
 }
