@@ -16,6 +16,13 @@ namespace CommonTestUtilities.Repositories.Products
             return this;
         }
 
+        public ProductReadRepositoryBuilder SetupIdExists(bool exists)
+        {
+            _repository.Setup(repo => repo.HasAnyById(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(exists);
+            return this;
+        }
+
         public IProductReadRepository Build() => _repository.Object;
     }
 }
