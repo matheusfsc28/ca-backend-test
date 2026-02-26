@@ -1,6 +1,9 @@
-﻿namespace BillingSystem.Application.DTOs.Requests.Products
+﻿using BillingSystem.Application.DTOs.Requests.Base;
+
+namespace BillingSystem.Application.DTOs.Requests.Products
 {
-    public record ProductRequestDto(
-        string? Name
-    );
+    public class ProductRequestDto : BaseRequestDto
+    {
+        public string? Name { get; set; }
+    }
 }
