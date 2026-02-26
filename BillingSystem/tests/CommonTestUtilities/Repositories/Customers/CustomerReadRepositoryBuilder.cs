@@ -20,6 +20,10 @@ namespace CommonTestUtilities.Repositories.Customers
         {
             _repository.Setup(repo => repo.EmailRegistered(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(exists);
+
+            _repository.Setup(repo => repo.EmailRegistered(It.IsAny<Guid>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(exists);
+
             return this;
         }
 
