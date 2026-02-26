@@ -1,9 +1,9 @@
 ﻿using BillingSystem.Domain.Entities.Customers;
 using BillingSystem.Domain.Interfaces.Repositories.Customers;
 using BillingSystem.Infrastructure.Data;
-using BillingSystem.Infrastructure.Repositories.Write.Base;
+using BillingSystem.Infrastructure.Repositories.Base;
 
-namespace BillingSystem.Infrastructure.Repositories.Write.Customers
+namespace BillingSystem.Infrastructure.Repositories.Customers
 {
     public class CustomerRepository : BaseRepository<Customer>, ICustomerWriteRepository, ICustomerReadRepository
     {

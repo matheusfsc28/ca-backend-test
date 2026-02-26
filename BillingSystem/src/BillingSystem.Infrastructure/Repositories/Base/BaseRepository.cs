@@ -3,7 +3,7 @@ using BillingSystem.Domain.Interfaces.Repositories.Base;
 using BillingSystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace BillingSystem.Infrastructure.Repositories.Write.Base
+namespace BillingSystem.Infrastructure.Repositories.Base
 {
     public class BaseRepository<T> : IBaseReadRepository<T>, IBaseWriteRepository<T> where T : BaseEntity
     {
@@ -34,6 +34,19 @@ namespace BillingSystem.Infrastructure.Repositories.Write.Base
         public Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return _dbSet.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+        }
+
+        public async Task<HashSet<Guid>> GetExistingIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default)
+        {
+            return await _dbSet
+                .Where(e => ids.Contains(e.Id))
+                .Select(e => e.Id)
+                .ToHashSetAsync(cancellationToken);
+        }
+
+        public Task<bool> HasAnyById(Guid id, CancellationToken cancellationToken)
+        {
+            return _dbSet.AnyAsync(e => e.Id == id, cancellationToken);
         }
     }
 }
