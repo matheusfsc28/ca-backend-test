@@ -120,6 +120,9 @@
   <data name="ADDRESS_EMPTY" xml:space="preserve">
     <value>O campo "address" não pode estar vazio.</value>
   </data>
+  <data name="ADDRESS_MAX_LENGTH" xml:space="preserve">
+    <value>O valor 'address' deve ter no máximo {0} caracteres.</value>
+  </data>
   <data name="BILLING_ID_EMPTY" xml:space="preserve">
     <value>O campo "billing_id" não pode estar vazio.</value>
   </data>
@@ -138,14 +141,29 @@
   <data name="DUE_DATE_EMPTY" xml:space="preserve">
     <value>O campo "due_date" não pode estar vazia.</value>
   </data>
+  <data name="EMAIL_ALREADY_EXISTS" xml:space="preserve">
+    <value>O e-mail informado já está em uso por outro cliente.</value>
+  </data>
   <data name="EMAIL_EMPTY" xml:space="preserve">
     <value>O campo "email" não pode estar vazio.</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>O e-mail é inválido.</value>
+  </data>
+  <data name="EMAIL_MAX_LENGTH" xml:space="preserve">
+    <value>O valor 'email' deve ter no máximo {0} caracteres.</value>
+  </data>
+  <data name="ID_ALREADY_EXISTS" xml:space="preserve">
+    <value>O ID fornecido já está em uso na plataforma.</value>
   </data>
   <data name="INVOICE_NUMBER_EMPTY" xml:space="preserve">
     <value>O campo "invoice_number" não pode estar vazio.</value>
   </data>
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>O campo "name" não pode estar vazio.</value>
+  </data>
+  <data name="NAME_MAX_LENGTH" xml:space="preserve">
+    <value>O valor 'nome' deve ter no máximo {0} caracteres.</value>
   </data>
   <data name="PRODUCT_FROM_EXTERNAL_API_NOT_EXISTS" xml:space="preserve">
     <value>O produto '{0}' (ID: {1}) não existe em nossa base de dados. Ignorando fatura de número: {2}.</value>

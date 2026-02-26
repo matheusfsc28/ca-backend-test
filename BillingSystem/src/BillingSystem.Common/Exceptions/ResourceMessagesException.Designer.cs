@@ -70,6 +70,15 @@ namespace BillingSystem.Common.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The value &apos;address&apos; must have a maximum of {0} characters..
+        /// </summary>
+        public static string ADDRESS_MAX_LENGTH {
+            get {
+                return ResourceManager.GetString("ADDRESS_MAX_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The billing id cannot be empty..
         /// </summary>
         public static string BILLING_ID_EMPTY {
@@ -124,11 +133,47 @@ namespace BillingSystem.Common.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The email address provided is already in use by another customer..
+        /// </summary>
+        public static string EMAIL_ALREADY_EXISTS {
+            get {
+                return ResourceManager.GetString("EMAIL_ALREADY_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The &quot;email&quot; value cannot be empty..
         /// </summary>
         public static string EMAIL_EMPTY {
             get {
                 return ResourceManager.GetString("EMAIL_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The email is invalid..
+        /// </summary>
+        public static string EMAIL_INVALID {
+            get {
+                return ResourceManager.GetString("EMAIL_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The value &apos;email&apos; must have a maximum of {0} characters..
+        /// </summary>
+        public static string EMAIL_MAX_LENGTH {
+            get {
+                return ResourceManager.GetString("EMAIL_MAX_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The ID provided is already in use on the platform..
+        /// </summary>
+        public static string ID_ALREADY_EXISTS {
+            get {
+                return ResourceManager.GetString("ID_ALREADY_EXISTS", resourceCulture);
             }
         }
         
@@ -147,6 +192,15 @@ namespace BillingSystem.Common.Exceptions {
         public static string NAME_EMPTY {
             get {
                 return ResourceManager.GetString("NAME_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The value &apos;name&apos; must have a maximum of {0} characters..
+        /// </summary>
+        public static string NAME_MAX_LENGTH {
+            get {
+                return ResourceManager.GetString("NAME_MAX_LENGTH", resourceCulture);
             }
         }
         

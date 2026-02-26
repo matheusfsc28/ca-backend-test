@@ -120,6 +120,9 @@
   <data name="ADDRESS_EMPTY" xml:space="preserve">
     <value>The "address" value cannot be empty.</value>
   </data>
+  <data name="ADDRESS_MAX_LENGTH" xml:space="preserve">
+    <value>The value 'address' must have a maximum of {0} characters.</value>
+  </data>
   <data name="BILLING_ID_EMPTY" xml:space="preserve">
     <value>The billing id cannot be empty.</value>
   </data>
@@ -138,14 +141,29 @@
   <data name="DUE_DATE_EMPTY" xml:space="preserve">
     <value>The "due_date" value cannot be empty</value>
   </data>
+  <data name="EMAIL_ALREADY_EXISTS" xml:space="preserve">
+    <value>The email address provided is already in use by another customer.</value>
+  </data>
   <data name="EMAIL_EMPTY" xml:space="preserve">
     <value>The "email" value cannot be empty.</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>The email is invalid.</value>
+  </data>
+  <data name="EMAIL_MAX_LENGTH" xml:space="preserve">
+    <value>The value 'email' must have a maximum of {0} characters.</value>
+  </data>
+  <data name="ID_ALREADY_EXISTS" xml:space="preserve">
+    <value>The ID provided is already in use on the platform.</value>
   </data>
   <data name="INVOICE_NUMBER_EMPTY" xml:space="preserve">
     <value>The "invoice_number" value cannot be empty.</value>
   </data>
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>The "name" value cannot be empty.</value>
+  </data>
+  <data name="NAME_MAX_LENGTH" xml:space="preserve">
+    <value>The value 'name' must have a maximum of {0} characters.</value>
   </data>
   <data name="PRODUCT_FROM_EXTERNAL_API_NOT_EXISTS" xml:space="preserve">
     <value>The product '{0}'  (ID: {1}) not exists on database. Ignoring invoice with number: {2}. </value>
