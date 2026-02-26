@@ -1,7 +1,12 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/BillingSystem.Application/BillingSystem.Application.csproj" Id="e247c3e6-8a17-419a-8cba-187aab583098" />
+    <Project Path="src/BillingSystem.Common/BillingSystem.Common.csproj" Id="dda6ff42-058e-4caa-9889-bae8510bc0a5" />
     <Project Path="src/BillingSystem.Domain/BillingSystem.Domain.csproj" />
     <Project Path="src/BillingSystem.Infrastructure/BillingSystem.Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/tests/" />
+  <Folder Name="/tests/">
+    <Project Path="tests/CommonTestUtilities/CommonTestUtilities.csproj" Id="bf518d2a-e15e-44d4-ba41-8ed2ca0cd55b" />
+    <Project Path="tests/UseCases.Test/UseCases.Test.csproj" Id="ae7e3fc4-9172-470a-bc17-44d3c5f80fa8" />
+  </Folder>
 </Solution>
