@@ -115,6 +115,15 @@ namespace BillingSystem.Common.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The customer could not be found..
+        /// </summary>
+        public static string CUSTOMER_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("CUSTOMER_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The date cannot be empty..
         /// </summary>
         public static string DATE_EMPTY {
