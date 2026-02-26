@@ -4,6 +4,7 @@ namespace BillingSystem.Domain.Interfaces.Repositories.Base
 {
     public interface IBaseWriteRepository<T> where T : BaseEntity 
     {
+        Task<T?> GetByIdToUpdate(Guid id, CancellationToken cancellationToken);
         Task AddAsync(T entity, CancellationToken cancellationToken = default);
         Task AddAsync(IEnumerable<T> entity, CancellationToken cancellationToken = default);
     }

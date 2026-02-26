@@ -31,9 +31,14 @@ namespace BillingSystem.Infrastructure.Repositories.Base
             return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
         }
 
-        public Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public Task<T?> GetByIdToUpdate(Guid id, CancellationToken cancellationToken)
         {
             return _dbSet.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+        }
+
+        public Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            return _dbSet.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
         }
 
         public async Task<HashSet<Guid>> GetExistingIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default)

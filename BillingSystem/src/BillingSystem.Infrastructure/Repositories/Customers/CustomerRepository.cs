@@ -14,5 +14,10 @@ namespace BillingSystem.Infrastructure.Repositories.Customers
         {
             return await _dbSet.AnyAsync(c => c.Email == email, cancellationToken);
         }
+
+        public Task<bool> EmailRegistered(Guid id, string email, CancellationToken cancellationToken = default)
+        {
+            return _dbSet.AnyAsync(c => c.Email == email && c.Id != id, cancellationToken);
+        }
     }
 }
