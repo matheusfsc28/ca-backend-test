@@ -37,7 +37,7 @@ namespace BillingSystem.Infrastructure.Repositories.Base
             return _dbSet.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
         }
 
-        public Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public virtual Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return _dbSet.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
         }
@@ -56,7 +56,7 @@ namespace BillingSystem.Infrastructure.Repositories.Base
             return _dbSet.AsNoTracking().AnyAsync(e => e.Id == id, cancellationToken);
         }
 
-        public async Task<(IEnumerable<T> Items, int TotalCount)> GetPagedAsync(int pageNumber, int pageSize, Expression<Func<T, bool>>? filter = null, CancellationToken cancellationToken = default)
+        public virtual async Task<(IEnumerable<T> Items, int TotalCount)> GetPagedAsync(int pageNumber, int pageSize, Expression<Func<T, bool>>? filter = null, CancellationToken cancellationToken = default)
         {
             var query = _dbSet.AsNoTracking();
 
