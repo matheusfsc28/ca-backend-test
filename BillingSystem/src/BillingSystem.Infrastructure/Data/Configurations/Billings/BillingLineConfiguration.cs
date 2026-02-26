@@ -17,6 +17,10 @@ namespace BillingSystem.Infrastructure.Data.Configurations.Billings
                    .IsRequired()
                    .HasPrecision(18, 2);
 
+            builder.Property(bl => bl.Subtotal)
+                   .IsRequired()
+                   .HasPrecision(18, 2);
+
             builder.HasOne(bl => bl.Product)
                    .WithMany()
                    .HasForeignKey(bl => bl.ProductId)

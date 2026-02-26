@@ -10,9 +10,24 @@ namespace BillingSystem.Infrastructure.Data.Configurations.Billings
         {
             builder.HasKey(b => b.Id);
 
+            builder.Property(b => b.InvoiceNumber)
+                .IsRequired()
+                .HasMaxLength(200); ;
+
+            builder.HasIndex(b => b.InvoiceNumber)
+                .IsUnique();
+
+            builder.Property(b => b.TotalAmount)
+                .IsRequired()
+                .HasPrecision(18, 2);
+
+            builder.Property(b => b.Currency)
+                .IsRequired()
+                .HasMaxLength(3);
+
             builder.HasMany(b => b.Lines)
                    .WithOne()
-                   .HasForeignKey("BillingId")
+                   .HasForeignKey(bl => bl.BillingId)
                    .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(b => b.Customer)
