@@ -7,6 +7,9 @@ namespace BillingSystem.Application.Commands.Customers.RegisterCustomer
     {
         public RegisterCustomerValidator()
         {
+            RuleFor(request => request.Id)
+                .NotEmpty().WithMessage(ResourceMessagesException.ID_EMPTY);
+
             RuleFor(request => request.Name)
                 .NotEmpty().WithMessage(ResourceMessagesException.NAME_EMPTY)
                 .MaximumLength(150).WithMessage(string.Format(ResourceMessagesException.NAME_MAX_LENGTH, 150));
