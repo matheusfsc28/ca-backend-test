@@ -10,16 +10,18 @@ namespace BillingSystem.Domain.Entities.Billings
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
         public decimal UnitPrice { get; private set; }
+        public decimal Subtotal { get; private set; }
 
         protected BillingLine() { }
 
-        public BillingLine(Guid id, Guid billingId, Guid productId, int quantity, decimal unitPrice)
+        public BillingLine(Guid billingId, Guid productId, int quantity, decimal unitPrice)
         {
             Id = id;
             BillingId = billingId;
             ProductId = productId;
             Quantity = quantity;
             UnitPrice = unitPrice;
+            Subtotal = GetSubtotal();
         }
 
         public decimal GetSubtotal()
