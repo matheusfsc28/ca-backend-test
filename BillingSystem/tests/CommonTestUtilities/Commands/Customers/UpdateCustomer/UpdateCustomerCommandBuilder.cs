@@ -1,5 +1,5 @@
 ﻿using BillingSystem.Application.Commands.Customers.UpdateCustomer;
-using BillingSystem.Application.DTOs.Requests.Customer;
+using BillingSystem.Application.DTOs.Requests.Customers;
 using Bogus;
 
 namespace CommonTestUtilities.Commands.Customers.UpdateCustomer

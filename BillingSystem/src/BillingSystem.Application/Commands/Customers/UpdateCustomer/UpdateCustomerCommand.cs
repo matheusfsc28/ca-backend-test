@@ -1,4 +1,4 @@
-﻿using BillingSystem.Application.DTOs.Requests.Customer;
+﻿using BillingSystem.Application.DTOs.Requests.Customers;
 using BillingSystem.Domain.Entities.Customers;
 using MediatR;
 

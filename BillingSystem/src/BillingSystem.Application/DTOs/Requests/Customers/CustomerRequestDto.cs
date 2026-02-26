@@ -1,4 +1,4 @@
-﻿namespace BillingSystem.Application.DTOs.Requests.Customer
+﻿namespace BillingSystem.Application.DTOs.Requests.Customers
 {
     public record CustomerRequestDto(
         string? Name,
