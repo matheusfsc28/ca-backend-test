@@ -18,9 +18,9 @@ namespace BillingSystem.Domain.Entities.Products
             Validate();
         }
 
-        public void Update(string name)
+        public void Update(string? name)
         {
-            Name = name;
+            Name = name ?? Name;
 
             Validate();
         }
@@ -31,6 +31,9 @@ namespace BillingSystem.Domain.Entities.Products
 
             if (string.IsNullOrEmpty(Name))
                 errors.Add(ResourceMessagesException.NAME_EMPTY);
+
+            if (Name.Length > 100)
+                errors.Add(string.Format(ResourceMessagesException.NAME_MAX_LENGTH, 100));
 
             if (errors.Count > 0)
                 throw new ErrorOnValidationException(errors);
