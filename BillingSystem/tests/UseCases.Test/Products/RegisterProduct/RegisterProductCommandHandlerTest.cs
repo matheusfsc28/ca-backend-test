@@ -2,11 +2,9 @@
 using BillingSystem.Application.DTOs.Responses.Products;
 using BillingSystem.Common.Exceptions;
 using BillingSystem.Common.Exceptions.BaseExceptions;
-using BillingSystem.Domain.Interfaces.Repositories.Products;
 using CommonTestUtilities.Commands.Products.RegisterProduct;
 using CommonTestUtilities.Data.UnitOfWork;
 using CommonTestUtilities.Repositories.Products;
-using Moq;
 
 namespace UseCases.Test.Products.RegisterProduct
 {
@@ -44,7 +42,7 @@ namespace UseCases.Test.Products.RegisterProduct
                 .SetupIdExists(idExists)
                 .Build();
 
-            var productWriteRepo = new Mock<IProductWriteRepository>().Object;
+            var productWriteRepo = new ProductWriteRepositoryBuilder().Build();
             var unitOfWork = UnitOfWorkBuilder.Build();
 
             return new RegisterProductCommandHandler(
