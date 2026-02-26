@@ -35,7 +35,7 @@ namespace Validators.Test.Products.UpdateProduct
         {
             var validator = new UpdateProductCommandValidator();
             var request = UpdateProductCommandBuilder.Build();
-            request = request with { RequestDto = request.RequestDto with { Name = string.Empty } };
+            request.RequestDto.Name = string.Empty;
 
             var result = validator.Validate(request);
 

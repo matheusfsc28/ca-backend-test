@@ -11,11 +11,12 @@ namespace CommonTestUtilities.Commands.Customers.UpdateCustomer
             return new Faker<UpdateCustomerCommand>()
                 .CustomInstantiator(f => new UpdateCustomerCommand(
                     id ?? Guid.NewGuid(),
-                    new CustomerRequestDto(
-                        f.Person.FullName.PadRight(nameLength, 'a'),
-                        f.Internet.Email(f.Person.FirstName).PadRight(emailLenght, 'a').ToLower(),
-                        f.Address.FullAddress().PadRight(addressLength, 'a')
-                    )
+                    new CustomerRequestDto
+                    {
+                        Name = f.Person.FullName.PadRight(nameLength, 'a'),
+                        Email = f.Internet.Email(f.Person.FirstName).PadRight(emailLenght, 'a').ToLower(),
+                        Address = f.Address.FullAddress().PadRight(addressLength, 'a')
+                    }
                 ));
         }
     }

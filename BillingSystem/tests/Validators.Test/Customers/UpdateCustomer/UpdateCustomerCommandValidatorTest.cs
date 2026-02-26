@@ -23,10 +23,8 @@ namespace Validators.Test.Customers.UpdateCustomer
             var validator = new UpdateCustomerCommandValidator();
             var request = UpdateCustomerCommandBuilder.Build();
 
-            request = request with
-            {
-                RequestDto = request.RequestDto with { Name = null, Email = null }
-            };
+            request.RequestDto.Name = null;
+            request.RequestDto.Email = null;
 
             var result = validator.Validate(request);
 
@@ -50,7 +48,8 @@ namespace Validators.Test.Customers.UpdateCustomer
         {
             var validator = new UpdateCustomerCommandValidator();
             var request = UpdateCustomerCommandBuilder.Build();
-            request = request with { RequestDto = request.RequestDto with { Name = string.Empty } };
+
+            request.RequestDto.Name = string.Empty;
 
             var result = validator.Validate(request);
 
@@ -75,7 +74,8 @@ namespace Validators.Test.Customers.UpdateCustomer
         {
             var validator = new UpdateCustomerCommandValidator();
             var request = UpdateCustomerCommandBuilder.Build();
-            request = request with { RequestDto = request.RequestDto with { Email = string.Empty } };
+
+            request.RequestDto.Email = string.Empty;
 
             var result = validator.Validate(request);
 
@@ -100,7 +100,8 @@ namespace Validators.Test.Customers.UpdateCustomer
         {
             var validator = new UpdateCustomerCommandValidator();
             var request = UpdateCustomerCommandBuilder.Build();
-            request = request with { RequestDto = request.RequestDto with { Address = string.Empty } };
+
+            request.RequestDto.Address = string.Empty;
 
             var result = validator.Validate(request);
 

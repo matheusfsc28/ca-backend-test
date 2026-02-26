@@ -11,9 +11,10 @@ namespace CommonTestUtilities.Commands.Products.UpdateProduct
             return new Faker<UpdateProductCommand>()
                 .CustomInstantiator(f => new UpdateProductCommand(
                     id ?? Guid.NewGuid(),
-                    new ProductRequestDto(
-                        f.Commerce.ProductName().PadRight(nameLength, 'a')
-                    )
+                    new ProductRequestDto
+                    {
+                        Name = f.Commerce.ProductName().PadRight(nameLength, 'a')
+                    }
                 ));
         }
     }
