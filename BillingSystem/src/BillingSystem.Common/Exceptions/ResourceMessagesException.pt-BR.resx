@@ -126,6 +126,9 @@
   <data name="BILLING_ID_EMPTY" xml:space="preserve">
     <value>O campo "billing_id" não pode estar vazio.</value>
   </data>
+  <data name="BILLING_NOT_FOUND" xml:space="preserve">
+    <value>Não foi possível encontrar a fatura.</value>
+  </data>
   <data name="CURRENCY_EMPTY" xml:space="preserve">
     <value>O camo "currency" não pode estar vazia.</value>
   </data>

@@ -88,6 +88,15 @@ namespace BillingSystem.Common.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The billing could not be found..
+        /// </summary>
+        public static string BILLING_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("BILLING_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The &quot;currency&quot; value cannot be empty..
         /// </summary>
         public static string CURRENCY_EMPTY {
