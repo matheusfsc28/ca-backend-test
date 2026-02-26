@@ -1,7 +1,8 @@
 ﻿using BillingSystem.Application.Commands.Customers.RegisterCustomer;
+using BillingSystem.Application.DTOs.Responses.Customers;
 using BillingSystem.Common.Exceptions;
 using BillingSystem.Common.Exceptions.BaseExceptions;
-using CommonTestUtilities.Commands.Customers.NovaPasta;
+using CommonTestUtilities.Commands.Customers.RegisterCustomer;
 using CommonTestUtilities.Data.UnitOfWork;
 using CommonTestUtilities.Repositories.Customers;
 using Moq;
@@ -21,6 +22,8 @@ namespace UseCases.Test.Customers.RegisterCustomer
             Assert.NotNull(result);
             Assert.Equal(request.Id, result.Id);
             Assert.Equal(request.Name, result.Name);
+            Assert.Equal(request.Email, result.Email);
+            Assert.IsType<CustomerResponseDto>(result);
         }
 
         [Fact]
