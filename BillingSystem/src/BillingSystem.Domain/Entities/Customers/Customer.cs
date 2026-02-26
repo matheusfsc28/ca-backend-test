@@ -22,11 +22,11 @@ namespace BillingSystem.Domain.Entities.Customers
             Validate();
         }
 
-        public void Update(string name, string email, string address)
+        public void Update(string? name, string? email, string? address)
         {
-            Name = name;
-            Email = email;
-            Address = address;
+            Name = name ?? Name;
+            Email = email ?? Email;
+            Address = address ?? Address;
 
             Validate();
         }
