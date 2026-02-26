@@ -5,5 +5,6 @@ namespace BillingSystem.Domain.Interfaces.Repositories.Customers
 {
     public interface ICustomerReadRepository : IBaseReadRepository<Customer>
     {
+        Task<bool> EmailRegistered(string email, CancellationToken cancellationToken = default);
     }
 }
