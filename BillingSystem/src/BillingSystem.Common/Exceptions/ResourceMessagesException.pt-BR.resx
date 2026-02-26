@@ -156,6 +156,9 @@
   <data name="ID_ALREADY_EXISTS" xml:space="preserve">
     <value>O ID fornecido já está em uso na plataforma.</value>
   </data>
+  <data name="ID_EMPTY" xml:space="preserve">
+    <value>O campo 'id' não pode estar vazio.</value>
+  </data>
   <data name="INVOICE_NUMBER_EMPTY" xml:space="preserve">
     <value>O campo "invoice_number" não pode estar vazio.</value>
   </data>

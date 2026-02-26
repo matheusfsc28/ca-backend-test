@@ -178,6 +178,15 @@ namespace BillingSystem.Common.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The &apos;id&apos; value cannot be empty..
+        /// </summary>
+        public static string ID_EMPTY {
+            get {
+                return ResourceManager.GetString("ID_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The &quot;invoice_number&quot; value cannot be empty..
         /// </summary>
         public static string INVOICE_NUMBER_EMPTY {
