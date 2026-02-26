@@ -1,4 +1,6 @@
-﻿using BillingSystem.Domain.Entities.Base;
+﻿using BillingSystem.Common.Exceptions;
+using BillingSystem.Common.Exceptions.BaseExceptions;
+using BillingSystem.Domain.Entities.Base;
 using BillingSystem.Domain.Entities.Customers;
 
 namespace BillingSystem.Domain.Entities.Billings
@@ -19,23 +21,40 @@ namespace BillingSystem.Domain.Entities.Billings
 
         public Billing(string invoiceNumber, Guid customerId, DateTime date, DateTime dueDate, decimal totalAmount, string currency)
         {
-            Id = id;
+            InvoiceNumber = invoiceNumber;
             CustomerId = customerId;
             Date = date;
             DueDate = dueDate;
             TotalAmount = totalAmount;
             Currency = currency;
+
+            Validate();
         }
 
-        public void AddLine(Guid productId, int quantity, decimal unitPrice)
+        private void Validate()
         {
-            var line = new BillingLine(Guid.NewGuid(), this.Id, productId, quantity, unitPrice);
-            _lines.Add(line);
-        }
+            var errors = new List<string>();
 
-        public decimal GetTotalAmount()
-        {
-            return _lines.Sum(l => l.GetSubtotal());
+            if (string.IsNullOrEmpty(InvoiceNumber))
+                errors.Add(ResourceMessagesException.INVOICE_NUMBER_EMPTY);
+
+            if (CustomerId == Guid.Empty)
+                errors.Add(ResourceMessagesException.CUSTOMER_ID_EMPTY);
+
+            if (Date == default)
+                errors.Add(ResourceMessagesException.DATE_EMPTY);
+
+            if (DueDate == default)
+                errors.Add(ResourceMessagesException.DUE_DATE_EMPTY);
+
+            if (TotalAmount <= 0)
+                errors.Add(ResourceMessagesException.TOTAL_AMOUNT_GREATER_THAN_ZERO);
+
+            if (string.IsNullOrEmpty(Currency))
+                errors.Add(ResourceMessagesException.CURRENCY_EMPTY);
+
+            if (errors.Count > 0)
+                throw new ErrorOnValidationException(errors);
         }
     }
 }
