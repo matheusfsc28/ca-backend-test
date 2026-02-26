@@ -241,6 +241,15 @@ namespace BillingSystem.Common.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The product could not be found..
+        /// </summary>
+        public static string PRODUCT_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("PRODUCT_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The &quot;quantity&quot; value must be greater than zero.
         /// </summary>
         public static string QUANTITY_GREATER_THAN_ZERO {
