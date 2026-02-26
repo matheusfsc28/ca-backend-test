@@ -16,6 +16,20 @@ namespace CommonTestUtilities.Repositories.Customers
             return this;
         }
 
+        public CustomerReadRepositoryBuilder SetupEmailExists(bool exists)
+        {
+            _repository.Setup(repo => repo.EmailRegistered(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(exists);
+            return this;
+        }
+
+        public CustomerReadRepositoryBuilder SetupIdExists(bool exists)
+        {
+            _repository.Setup(repo => repo.HasAnyById(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(exists);
+            return this;
+        }
+
         public ICustomerReadRepository Build() => _repository.Object;
     }
 }
