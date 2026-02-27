@@ -7,7 +7,7 @@ using MediatR;
 
 namespace BillingSystem.Application.Commands.Customers.RegisterCustomer
 {
-    public class RegisterCustomerCommandHandler : IRequestHandler<RegisterCustomerCommand, CustomerResponseDto>
+    public class RegisterCustomerCommandHandler : IRequestHandler<RegisterCustomerCommand, Guid>
     {
         private readonly ICustomerReadRepository _customerReadRepository;
         private readonly ICustomerWriteRepository _customerWriteRepository;
@@ -24,7 +24,7 @@ namespace BillingSystem.Application.Commands.Customers.RegisterCustomer
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CustomerResponseDto> Handle(RegisterCustomerCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(RegisterCustomerCommand request, CancellationToken cancellationToken)
         {
             await CheckIfCustomerIsUniqueAsync(request, cancellationToken);
 
@@ -34,7 +34,7 @@ namespace BillingSystem.Application.Commands.Customers.RegisterCustomer
 
             await _unitOfWork.CommitAsync(cancellationToken);
 
-            return new CustomerResponseDto(customer);
+            return customer.Id;
         }
 
         private async Task CheckIfCustomerIsUniqueAsync(RegisterCustomerCommand request, CancellationToken cancellationToken)

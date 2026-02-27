@@ -7,7 +7,7 @@ namespace BillingSystem.Application.Commands.Products.RegisterProduct
     public record RegisterProductCommand(
         Guid Id,
         string Name
-    ) : IRequest<ProductResponseDto>
+    ) : IRequest<Guid>
     {
         public Product ToDomain()
         {

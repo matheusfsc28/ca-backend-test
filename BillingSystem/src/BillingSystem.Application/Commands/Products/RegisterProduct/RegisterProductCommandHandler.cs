@@ -1,5 +1,4 @@
-﻿using BillingSystem.Application.DTOs.Responses.Products;
-using BillingSystem.Common.Exceptions;
+﻿using BillingSystem.Common.Exceptions;
 using BillingSystem.Common.Exceptions.BaseExceptions;
 using BillingSystem.Domain.Interfaces.Data;
 using BillingSystem.Domain.Interfaces.Repositories.Products;
@@ -7,7 +6,7 @@ using MediatR;
 
 namespace BillingSystem.Application.Commands.Products.RegisterProduct
 {
-    public class RegisterProductCommandHandler : IRequestHandler<RegisterProductCommand, ProductResponseDto>
+    public class RegisterProductCommandHandler : IRequestHandler<RegisterProductCommand, Guid>
     {
         private readonly IProductReadRepository _productReadRepository;
         private readonly IProductWriteRepository _productWriteRepository;
@@ -24,7 +23,7 @@ namespace BillingSystem.Application.Commands.Products.RegisterProduct
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ProductResponseDto> Handle(RegisterProductCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(RegisterProductCommand request, CancellationToken cancellationToken)
         {
             await CheckIfProductIsUniqueAsync(request, cancellationToken);
 
@@ -34,7 +33,7 @@ namespace BillingSystem.Application.Commands.Products.RegisterProduct
 
             await _unitOfWork.CommitAsync(cancellationToken);
 
-            return new ProductResponseDto(product);
+            return product.Id;
         }
 
         private async Task CheckIfProductIsUniqueAsync(RegisterProductCommand request, CancellationToken cancellationToken)

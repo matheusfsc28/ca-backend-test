@@ -9,7 +9,7 @@ namespace BillingSystem.Application.Commands.Customers.RegisterCustomer
         string Name,
         string Email,
         string Address
-    ) : IRequest<CustomerResponseDto>
+    ) : IRequest<Guid>
     {
         public Customer ToDomain()
         {
