@@ -9,7 +9,8 @@ namespace CommonTestUtilities.DTOs.Responses.ExternalBillingService
         {
             var customerFaker = new Faker<ExternalCustomerResponseDto>()
                 .RuleFor(c => c.Id, f => f.Random.Guid())
-                .RuleFor(c => c.Name, f => f.Person.FullName);
+                .RuleFor(c => c.Name, f => f.Person.FullName)
+                .RuleFor(c => c.Address,  f => f.Address.FullAddress());
 
             var lineFaker = new Faker<ExternalBillingLineResponseDto>()
                 .RuleFor(l => l.ProductId, f => f.Random.Guid())
