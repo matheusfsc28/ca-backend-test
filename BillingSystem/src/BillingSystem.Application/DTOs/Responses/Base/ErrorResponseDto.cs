@@ -13,5 +13,7 @@
         {
             Errors = [error];
         }
+
+        public ErrorResponseDto() => Errors = [];
     }
 }
