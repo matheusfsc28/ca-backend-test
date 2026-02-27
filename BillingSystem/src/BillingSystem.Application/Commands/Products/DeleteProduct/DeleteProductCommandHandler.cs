@@ -6,7 +6,7 @@ using MediatR;
 
 namespace BillingSystem.Application.Commands.Products.DeleteProduct
 {
-    public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand>
+    public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, Unit>
     {
         private readonly IProductWriteRepository _productWriteRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -20,7 +20,7 @@ namespace BillingSystem.Application.Commands.Products.DeleteProduct
             _unitOfWork = unitOfWork;
         }
 
-        public async Task Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
             var product = await _productWriteRepository.GetByIdToUpdate(request.Id, cancellationToken)
                 ?? throw new NotFoundException(ResourceMessagesException.PRODUCT_NOT_FOUND);
@@ -28,6 +28,8 @@ namespace BillingSystem.Application.Commands.Products.DeleteProduct
             product.Delete();
 
             await _unitOfWork.CommitAsync(cancellationToken);
+
+            return Unit.Value;
         }
     }
 }

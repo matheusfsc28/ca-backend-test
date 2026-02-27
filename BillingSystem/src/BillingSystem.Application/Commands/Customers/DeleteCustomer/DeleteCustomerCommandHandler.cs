@@ -6,7 +6,7 @@ using MediatR;
 
 namespace BillingSystem.Application.Commands.Customers.DeleteCustomer
 {
-    public class DeleteCustomerCommandHandler : IRequestHandler<DeleteCustomerCommand>
+    public class DeleteCustomerCommandHandler : IRequestHandler<DeleteCustomerCommand, Unit>
     {
         private readonly ICustomerWriteRepository _customerWriteRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -20,7 +20,7 @@ namespace BillingSystem.Application.Commands.Customers.DeleteCustomer
             _unitOfWork = unitOfWork;
         }
 
-        public async Task Handle(DeleteCustomerCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteCustomerCommand request, CancellationToken cancellationToken)
         {
             var customer = await _customerWriteRepository.GetByIdToUpdate(request.Id, cancellationToken)
                 ?? throw new NotFoundException(ResourceMessagesException.CUSTOMER_NOT_FOUND);
@@ -28,6 +28,8 @@ namespace BillingSystem.Application.Commands.Customers.DeleteCustomer
             customer.Delete();
 
             await _unitOfWork.CommitAsync(cancellationToken);
+
+            return Unit.Value;
         }
     }
 }

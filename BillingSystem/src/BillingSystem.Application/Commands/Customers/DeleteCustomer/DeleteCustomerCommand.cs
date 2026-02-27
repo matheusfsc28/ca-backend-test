@@ -2,5 +2,5 @@
 
 namespace BillingSystem.Application.Commands.Customers.DeleteCustomer
 {
-    public record DeleteCustomerCommand(Guid Id) : IRequest;
+    public record DeleteCustomerCommand(Guid Id) : IRequest<Unit>;
 }
