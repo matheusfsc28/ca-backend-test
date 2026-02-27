@@ -39,14 +39,15 @@ namespace BillingSystem.Application.Queries.Billings.GetBillingsPaged
                 return null;
 
             var invoiceNumberFilter = requestDto.InvoiceNumber?.ToLower();
-            var currencyFilter = requestDto.InvoiceNumber?.ToLower();
+            var currencyFilter = requestDto.Currency?.ToLower();
 
             Expression<Func<Billing, bool>> filter = b =>
                 (string.IsNullOrEmpty(invoiceNumberFilter) || b.InvoiceNumber.ToLower().Contains(invoiceNumberFilter)) &&
                 (string.IsNullOrEmpty(currencyFilter) || b.Currency.ToLower().Contains(currencyFilter)) &&
                 (requestDto.CustomerId == null || b.CustomerId == requestDto.CustomerId) &&
-                (requestDto.Date == null || DateOnly.FromDateTime(b.Date) == DateOnly.FromDateTime(b.Date)) &&
-                (requestDto.DueDate == null || DateOnly.FromDateTime(b.DueDate) == DateOnly.FromDateTime(b.DueDate));
+
+                (requestDto.Date == null || b.Date.Date == requestDto.Date.Value.Date) &&
+                (requestDto.DueDate == null || b.DueDate.Date == requestDto.DueDate.Value.Date);
 
             return filter;
         }
