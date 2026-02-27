@@ -1,14 +1,31 @@
 using Asp.Versioning;
+using BillingSystem.Api.Configurations.ModelBinding;
+using BillingSystem.Api.Configurations.Routing;
 using BillingSystem.Api.Filters;
 using BillingSystem.Api.Middlewares;
 using BillingSystem.Application;
 using BillingSystem.Infrastructure;
 using BillingSystem.Infrastructure.Data.Migrations;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.OpenApi;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Conventions.Add(new RouteTokenTransformerConvention(
+        new KebabCaseParameterTransformer()
+    ));
+
+    options.Conventions.Add(new SnakeCaseParameterModelConvention());
+
+    options.ModelMetadataDetailsProviders.Add(new SnakeCasePropertyBindingMetadataProvider());
+})
+.AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
+});
 
 builder.Services.AddApiVersioning(options =>
 {
