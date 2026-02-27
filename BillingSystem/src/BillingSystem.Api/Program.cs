@@ -3,6 +3,7 @@ using BillingSystem.Api.Filters;
 using BillingSystem.Api.Middlewares;
 using BillingSystem.Application;
 using BillingSystem.Infrastructure;
+using BillingSystem.Infrastructure.Data.Migrations;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,5 +54,7 @@ app.UseHttpsRedirection();
 //app.UseAuthorization();
 
 app.MapControllers();
+
+await DatabaseMigration.MigrateAsync(app.Services);
 
 app.Run();
