@@ -72,6 +72,9 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
-await DatabaseMigration.MigrateAsync(app.Services);
+if (app.Environment.EnvironmentName != "Test")
+    await DatabaseMigration.MigrateAsync(app.Services);
 
 app.Run();
+
+public partial class Program { }
