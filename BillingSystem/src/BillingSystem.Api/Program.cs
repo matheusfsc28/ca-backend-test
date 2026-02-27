@@ -1,3 +1,4 @@
+using BillingSystem.Api.Filters;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,8 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API para gestão de clientes, produtos e sincronização de notas fiscais.",
     });
 });
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 var app = builder.Build();
 
