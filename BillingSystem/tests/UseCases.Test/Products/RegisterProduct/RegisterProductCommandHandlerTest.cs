@@ -18,10 +18,9 @@ namespace UseCases.Test.Products.RegisterProduct
 
             var result = await handler.Handle(request, CancellationToken.None);
 
-            Assert.NotNull(result);
-            Assert.Equal(request.Id, result.Id);
-            Assert.Equal(request.Name, result.Name);
-            Assert.IsType<ProductResponseDto>(result);
+            Assert.IsType<Guid>(result);
+            Assert.NotEqual(Guid.Empty, result);
+            Assert.Equal(request.Id, result);
         }
 
         [Fact]
