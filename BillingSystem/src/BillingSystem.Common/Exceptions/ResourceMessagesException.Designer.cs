@@ -311,5 +311,14 @@ namespace BillingSystem.Common.Exceptions {
                 return ResourceManager.GetString("UNIT_PRICE_GREATER_THAN_ZERO", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Unknown error..
+        /// </summary>
+        public static string UNKNOWN_ERROR {
+            get {
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
+            }
+        }
     }
 }

@@ -201,4 +201,7 @@
   <data name="UNIT_PRICE_GREATER_THAN_ZERO" xml:space="preserve">
     <value>O campo "unit_price" deve ser maior que zero.</value>
   </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Erro desconhecido.</value>
+  </data>
 </root>
