@@ -159,6 +159,15 @@
   <data name="EMAIL_MAX_LENGTH" xml:space="preserve">
     <value>O valor 'email' deve ter no máximo {0} caracteres.</value>
   </data>
+  <data name="EXTERNAL_API_ERROR" xml:space="preserve">
+    <value>A API externa de faturamentos está indisponível ou retornou um erro.</value>
+  </data>
+  <data name="EXTERNAL_API_TIMEOUT" xml:space="preserve">
+    <value>A requisição para a API externa de faturamento excedeu o tempo limite (Timeout).</value>
+  </data>
+  <data name="EXTERNAL_API_UNKNOWN_ERROR" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao sincronizar as faturas.</value>
+  </data>
   <data name="ID_ALREADY_EXISTS" xml:space="preserve">
     <value>O ID fornecido já está em uso na plataforma.</value>
   </data>

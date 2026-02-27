@@ -187,6 +187,33 @@ namespace BillingSystem.Common.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The external billing API is unavailable or returned an error..
+        /// </summary>
+        public static string EXTERNAL_API_ERROR {
+            get {
+                return ResourceManager.GetString("EXTERNAL_API_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The request to the external billing API timed out..
+        /// </summary>
+        public static string EXTERNAL_API_TIMEOUT {
+            get {
+                return ResourceManager.GetString("EXTERNAL_API_TIMEOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a An unexpected error occurred while synchronizing invoices..
+        /// </summary>
+        public static string EXTERNAL_API_UNKNOWN_ERROR {
+            get {
+                return ResourceManager.GetString("EXTERNAL_API_UNKNOWN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The ID provided is already in use on the platform..
         /// </summary>
         public static string ID_ALREADY_EXISTS {
