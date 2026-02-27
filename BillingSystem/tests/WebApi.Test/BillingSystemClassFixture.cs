@@ -6,10 +6,13 @@ namespace WebApi.Test
     public class BillingSystemClassFixture : IClassFixture<CustomWebApplicationFactory>
     {
         private readonly HttpClient _httpClient;
-        
+        protected readonly CustomWebApplicationFactory _factory;
+
+
         public BillingSystemClassFixture(CustomWebApplicationFactory factory)
         {
             _httpClient = factory.CreateClient();
+            _factory = factory;
         }
 
         protected async Task<HttpResponseMessage> DoPost(string endpoint, object request, string culture = "en")
@@ -17,6 +20,13 @@ namespace WebApi.Test
             ChangeRequestCulture(culture);
 
             return await _httpClient.PostAsJsonAsync(endpoint, request);
+        }
+
+        protected async Task<HttpResponseMessage> DoPost(string endpoint, string culture = "en")
+        {
+            ChangeRequestCulture(culture);
+
+            return await _httpClient.PostAsync(endpoint, null);
         }
 
         protected async Task<HttpResponseMessage> DoGet(string endpoint, string culture = "en")
