@@ -1,10 +1,11 @@
-﻿using BillingSystem.Application.DTOs.Responses.Base;
+﻿using Asp.Versioning;
+using BillingSystem.Application.DTOs.Responses.Base;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BillingSystem.Api.Controllers.V1.Base
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:ApiVersion}/[controller]")]
     [ApiController]
     [ApiVersion("1.0")]
     [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
