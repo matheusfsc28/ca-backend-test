@@ -17,6 +17,9 @@ namespace BillingSystem.Api.Controllers.V1.Products
     {
         public ProductController(IMediator mediator) : base(mediator) { }
 
+        /// <summary>
+        /// Get paged products response.
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(PagedResponseDto<ProductResponseDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Get([FromQuery] PaginationRequestDto<ProductRequestDto> requestDto, CancellationToken cancellationToken)
@@ -24,6 +27,9 @@ namespace BillingSystem.Api.Controllers.V1.Products
             return Ok(await _mediator.Send(new GetProductsPagedQuery(requestDto), cancellationToken));
         }
 
+        /// <summary>
+        /// Get product by id.
+        /// </summary>
         [HttpGet]
         [Route("{Id}")]
         [ProducesResponseType(typeof(ProductResponseDto), StatusCodes.Status200OK)]
@@ -33,6 +39,9 @@ namespace BillingSystem.Api.Controllers.V1.Products
             return Ok(await _mediator.Send(new GetProductByIdQuery(Id), cancellationToken));
         }
 
+        /// <summary>
+        /// Register a new product.
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
@@ -42,6 +51,9 @@ namespace BillingSystem.Api.Controllers.V1.Products
             return CreatedAtAction(nameof(GetById), new { Id = id }, id);
         }
 
+        /// <summary>
+        /// Update a product by id.
+        /// </summary>
         [HttpPut]
         [Route("{Id}")]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
@@ -53,6 +65,9 @@ namespace BillingSystem.Api.Controllers.V1.Products
             return NoContent();
         }
 
+        /// <summary>
+        /// Delete a product by id.
+        /// </summary>
         [HttpDelete]
         [Route("{Id}")]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]

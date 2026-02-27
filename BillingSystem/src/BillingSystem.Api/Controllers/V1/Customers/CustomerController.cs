@@ -17,6 +17,9 @@ namespace BillingSystem.Api.Controllers.V1.Customers
     {
         public CustomerController(IMediator mediator) : base(mediator) { }
 
+        /// <summary>
+        /// Get paged customers response.
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(PagedResponseDto<CustomerResponseDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Get([FromQuery] PaginationRequestDto<CustomerRequestDto> request, CancellationToken cancellationToken)
@@ -24,6 +27,9 @@ namespace BillingSystem.Api.Controllers.V1.Customers
             return Ok(await _mediator.Send(new GetCustomersPagedQuery(request), cancellationToken));
         }
 
+        /// <summary>
+        /// Get a customer by id.
+        /// </summary>
         [HttpGet]
         [Route("{Id}")]
         [ProducesResponseType(typeof(CustomerResponseDto), StatusCodes.Status200OK)]
@@ -33,6 +39,9 @@ namespace BillingSystem.Api.Controllers.V1.Customers
             return Ok(await _mediator.Send(new GetCustomerByIdQuery(Id), cancellationToken));
         }
 
+        /// <summary>
+        /// Register a new customer.
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
@@ -42,6 +51,9 @@ namespace BillingSystem.Api.Controllers.V1.Customers
             return CreatedAtAction(nameof(GetById), new { Id = id }, id);
         }
 
+        /// <summary>
+        /// Update a customer by id.
+        /// </summary>
         [HttpPut]
         [Route("{Id}")]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
@@ -53,6 +65,9 @@ namespace BillingSystem.Api.Controllers.V1.Customers
             return NoContent();
         }
 
+        /// <summary>
+        /// Delete a customer by id.
+        /// </summary>
         [HttpDelete]
         [Route("{Id}")]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]

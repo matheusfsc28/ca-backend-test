@@ -15,6 +15,9 @@ namespace BillingSystem.Api.Controllers.V1.Billings
     {
         public BillingController(IMediator mediator) : base(mediator) { }
 
+        /// <summary>
+        /// Get paged Billings response.
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(typeof(PagedResponseDto<BillingResponseDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> Get([FromQuery] PaginationRequestDto<BillingRequestDto> requestDto, CancellationToken cancellationToken)
@@ -22,6 +25,9 @@ namespace BillingSystem.Api.Controllers.V1.Billings
             return Ok(await _mediator.Send(new GetBillingsPagedQuery(requestDto), cancellationToken));
         }
 
+        /// <summary>
+        /// Get Billing by id.
+        /// </summary>
         [HttpGet]
         [Route("{Id}")]
         [ProducesResponseType(typeof(BillingResponseDto), StatusCodes.Status200OK)]
@@ -31,6 +37,9 @@ namespace BillingSystem.Api.Controllers.V1.Billings
             return Ok(await _mediator.Send(new GetBillingByIdQuery(Id), cancellationToken));
         }
 
+        /// <summary>
+        /// Create billings by external billings API.
+        /// </summary>
         [HttpPost]
         [Route("sync")]
         [ProducesResponseType(typeof(SyncBillingsResponseDto), StatusCodes.Status200OK)]
