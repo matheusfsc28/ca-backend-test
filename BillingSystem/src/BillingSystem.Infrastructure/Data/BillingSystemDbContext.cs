@@ -2,7 +2,9 @@
 using BillingSystem.Domain.Entities.Billings;
 using BillingSystem.Domain.Entities.Customers;
 using BillingSystem.Domain.Entities.Products;
+using BillingSystem.Infrastructure.Data.Converters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Linq.Expressions;
 
 namespace BillingSystem.Infrastructure.Data
@@ -15,6 +17,19 @@ namespace BillingSystem.Infrastructure.Data
         public DbSet<BillingLine> BillingLines { get; set; }
 
         public BillingSystemDbContext(DbContextOptions<BillingSystemDbContext> options) : base(options) { }
+
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            base.ConfigureConventions(configurationBuilder);
+
+            configurationBuilder
+                .Properties<DateTime>()
+                .HaveConversion<UtcDateTimeConverter>();
+
+            configurationBuilder
+                .Properties<DateTime?>()
+                .HaveConversion<UtcDateTimeConverter>();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
