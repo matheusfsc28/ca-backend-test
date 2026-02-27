@@ -110,7 +110,7 @@ namespace UseCases.Test.Billings.SyncBillings
             async Task value() => await handler.Handle(new SyncBillingsCommand(), CancellationToken.None);
             Func<Task> act = value;
 
-            var exception = await Assert.ThrowsAsync<ErrorOnSyncBillingValidation>(act);
+            var exception = await Assert.ThrowsAsync<ErrorOnSyncBillingException>(act);
 
             Assert.Equal(1, exception.GetSuccessesCount());
             Assert.Equal(HttpStatusCode.MultiStatus, exception.GetStatusCode());

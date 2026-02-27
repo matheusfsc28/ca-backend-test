@@ -2,12 +2,12 @@
 
 namespace BillingSystem.Common.Exceptions.BaseExceptions
 {
-    public class ErrorOnSyncBillingValidation : BillingSystemException
+    public class ErrorOnSyncBillingException : BillingSystemException
     {
         private readonly IEnumerable<string> _errors;
         private readonly int _successesCount;
 
-        public ErrorOnSyncBillingValidation(IEnumerable<string> errors, int successesCount) : base(string.Empty)
+        public ErrorOnSyncBillingException(IEnumerable<string> errors, int successesCount) : base(string.Empty)
         {
             _errors = errors;
             _successesCount = successesCount;

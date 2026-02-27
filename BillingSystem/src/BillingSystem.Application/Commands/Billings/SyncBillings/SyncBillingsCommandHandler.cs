@@ -84,7 +84,7 @@ namespace BillingSystem.Application.Commands.Billings.SyncBillings
                 if (billingsToCreate.Count == 0)
                     throw new ErrorOnValidationException(validationErrors);
                 else
-                    throw new ErrorOnSyncBillingValidation(validationErrors, billingsToCreate.Count);
+                    throw new ErrorOnSyncBillingException(validationErrors, billingsToCreate.Count);
             }
 
             return new SyncBillingsResponseDto(billingsToCreate.Count);
